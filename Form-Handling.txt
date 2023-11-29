@@ -1,0 +1,63 @@
+import 'package:flutter/material.dart';
+
+
+void main() {
+  runApp(MainPage());
+}
+
+class MainPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(home: FirstPage());
+  }
+}
+
+class FirstPage extends StatelessWidget {
+  
+    TextEditingController emailController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
+  
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("LOGIN"),
+          backgroundColor: Colors.amber,
+          leading: Icon(Icons.code),
+        ),
+        body: Form(
+          child: ListView(
+            padding: EdgeInsets.all(20),
+            children: [
+              TextFormField(
+               controller: emailController,
+               decoration: InputDecoration(
+                labelText: "Email Address",
+                ),
+               keyboardType: TextInputType.emailAddress
+              )
+              ,
+              TextFormField(
+               obscureText: true,
+               controller: passwordController,
+               decoration: InputDecoration(
+                labelText: "Password",
+                ),
+              keyboardType: TextInputType.text
+              ),
+              const SizedBox(height:20),
+              ElevatedButton(
+               onPressed: () {
+                   String email = emailController.text;
+                   String pass = passwordController.text;                 
+                   print("$email");
+                   print("$pass");
+               },
+               child: Text("Submit")
+              )
+            ]
+          )
+        )
+    );
+  }
+}
